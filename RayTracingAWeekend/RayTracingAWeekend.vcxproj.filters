@@ -48,13 +48,15 @@
     <ClInclude Include="dielectric.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="stb_image_write.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="RayTracingAWeek.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="svpng.inc">
+      <Filter>头文件</Filter>
+    </None>
   </ItemGroup>
 </Project>
