@@ -25,9 +25,9 @@ hitable *random_scene();
 
 int main()
 {
-	int nx = 160;
-	int ny = 80;
-	int ns = 1;
+	int nx = 400;
+	int ny = 200;
+	int ns = 10;
 	unsigned char *img = new unsigned char[nx * ny * 3];
 
 	vec3 lookfrom(13, 2, 3);
