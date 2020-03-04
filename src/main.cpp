@@ -53,14 +53,17 @@ int main()
 				col += color(r, world, 0);
 			}
 			col /= float(ns);
-			col = vec3(sqrt(col[0]), sqrt(col[1]), sqrt(col[2])); // gamma校正
-			img[k++] = unsigned char(255.99 * col[0]); //r
-			img[k++] = unsigned char(255.99 * col[1]); //g
-			img[k++] = unsigned char(255.99 * col[2]); //b
+			col = vec3(sqrt(col[0]), sqrt(col[1]), sqrt(col[2])); // Gamma校正
+			img[k++] = unsigned char(255.99 * col[0]); // r
+			img[k++] = unsigned char(255.99 * col[1]); // g
+			img[k++] = unsigned char(255.99 * col[2]); // b
 		}
 	}
 
-	svpng(fopen("D:/RayTracing.png", "wb"), nx, ny, img, 0); //将结果输出到png图片中
+	svpng(fopen("D:/RayTracing.png", "wb"), nx, ny, img, 0); // 将结果输出到png图片中
+
+    delete[] img;
+    delete world;
 
 	return 0;
 }
@@ -85,7 +88,7 @@ vec3 color(const ray& r, hitable *world, int depth)
 	{
 		vec3 unit_direction = unit_vector(r.direction());
 		float t = 0.5 * (unit_direction.y() + 1.0);
-		return (1.0 - t) * vec3(1.0, 1.0, 1.0) + t * vec3(0.5, 0.7, 1.0); //混合白色和蓝色
+		return (1.0 - t) * vec3(1.0, 1.0, 1.0) + t * vec3(0.5, 0.7, 1.0); // 混合白色和蓝色
 	}
 }
 
