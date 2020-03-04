@@ -25,9 +25,9 @@ hitable *random_scene();
 
 int main()
 {
-	int nx = 400;
-	int ny = 200;
-	int ns = 10;
+	int nx = 800;
+	int ny = 400;
+	int ns = 20; //像素采样数, SPP, Samples per pixel
 	unsigned char *img = new unsigned char[nx * ny * 3];
 
 	vec3 lookfrom(13, 2, 3);
@@ -60,7 +60,7 @@ int main()
 		}
 	}
 
-	svpng(fopen("D:/Desktop/Ray Tracing.png", "wb"), nx, ny, img, 0); //将结果输出到png图片中
+	svpng(fopen("D:/RayTracing.png", "wb"), nx, ny, img, 0); //将结果输出到png图片中
 
 	return 0;
 }
@@ -95,20 +95,28 @@ hitable *random_scene()
 	hitable **list = new hitable*[n + 1];
 	list[0] = new sphere(vec3(0, -1000, 0), 1000, new lambertian(vec3(0.5, 0.5, 0.5)));
 	int i = 1;
-	for (int a = -11; a < 11; a++) {
-		for (int b = -11; b < 11; b++) {
+	for (int a = -11; a < 11; a++) 
+    {
+		for (int b = -11; b < 11; b++) 
+        {
 			float choose_mat = drand48();
 			vec3 center(a + 0.9 * drand48(), 0.2, b + 0.9 * drand48());
-			if ((center - vec3(4, 0.2, 0)).length() > 0.9) {
-				if (choose_mat < 0.8) {  // 漫反射
-					list[i++] = new sphere(center, 0.2, new lambertian(vec3(drand48()*drand48(), drand48()*drand48(), drand48()*drand48())));
+            if ((center - vec3(4, 0.2, 0)).length() > 0.9)
+            {
+				if (choose_mat < 0.8) 
+                {  // 漫反射
+					list[i++] = new sphere(center, 0.2, 
+                        new lambertian(vec3(drand48()*drand48(), drand48()*drand48(), drand48()*drand48())));
 				}
-				else if (choose_mat < 0.95) { // 金属
+				else if (choose_mat < 0.95) 
+                { // 金属
 					list[i++] = new sphere(center, 0.2,
 						new metal(vec3(0.5*(1 + drand48()), 0.5*(1 + drand48()), 0.5*(1 + drand48())), 0.5*drand48()));
 				}
-				else {  // 玻璃
-					list[i++] = new sphere(center, 0.2, new dielectric(1.5));
+				else 
+                {  // 玻璃
+					list[i++] = new sphere(center, 0.2, 
+                        new dielectric(1.5));
 				}
 			}
 		}

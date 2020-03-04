@@ -1,5 +1,7 @@
 # RayTracing
 
-跟着《Ray Tracing in One Weekend》，自己实现了一遍，加入少许注释。
+阅读时《Ray Tracing in One Weekend》做的实践。
 
-作者的github：https://github.com/petershirley/raytracinginoneweekend
+最终效果图：
+
+![Ray Tracing](\img\RayTracing.png)
